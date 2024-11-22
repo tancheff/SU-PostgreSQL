@@ -1,5 +1,6 @@
 CREATE OR REPLACE FUNCTION fn_full_name(varchar, varchar)
-RETURNS varchar AS
+RETURNS varchar
+AS
 $$
 	DECLARE
 		first_name ALIAS FOR $1;
