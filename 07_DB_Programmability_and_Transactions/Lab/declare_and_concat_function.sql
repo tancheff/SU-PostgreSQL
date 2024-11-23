@@ -1,6 +1,5 @@
 CREATE OR REPLACE FUNCTION fn_full_name(first_name varchar, last_name varchar)
-RETURNS varchar
-AS
+RETURNS varchar AS
 $$
 	DECLARE
 		full_name varchar;
