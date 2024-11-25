@@ -29,6 +29,5 @@ BEGIN
 END;
 $$
 LANGUAGE plpgsql;
-
-
+-----------------------------------------------------
 CALL sp_retrieving_holders_with_balance_higher_than(200000);
