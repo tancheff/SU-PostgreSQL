@@ -61,3 +61,43 @@ BEGIN
 END;
 $$
 LANGUAGE plpgsql;
+-----------------------------------------------
+CALL sp_courses_by_address('700 Monterey Avenue');
+SELECT * FROM search_results;
+-----------------------------------------------
+SELECT
+	a.name as address_name,
+	cl.full_name,
+	cour.bill,
+	CASE
+		WHEN cour.bill <= 20 THEN 'Low'
+		WHEN cour.bill <= 30 THEN 'Medium'
+		ELSE 'High'
+	END AS level_of_bill,
+	c.make,
+	c.condition,
+	cat.name as category_name
+FROM
+	courses as cour
+JOIN
+	addresses as a
+ON
+	cour.from_address_id = a.id
+JOIN
+	clients as cl
+ON
+	cl.id = cour.client_id
+JOIN
+	cars as c
+ON
+	c.id = cour.car_id
+JOIN
+	categories as cat
+ON
+	cat.id = c.category_id
+WHERE
+	a.name = '700 Monterey Avenue'
+ORDER BY
+	c.make,
+	cl.full_name;
+-----------------------------------------------
