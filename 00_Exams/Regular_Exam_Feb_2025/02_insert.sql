@@ -1,4 +1,11 @@
-INSERT INTO items (name, quantity, price, description, brand_id, classification_id)
+INSERT INTO items (
+                   name,
+                   quantity,
+                   price,
+                   description,
+                   brand_id,
+                   classification_id
+)
 SELECT
 	CONCAT('Item', created_at) as name,
 	customer_id as quantity,
